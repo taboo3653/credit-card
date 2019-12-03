@@ -4,7 +4,11 @@ import BSButton from 'react-bootstrap/Button';
 import './Button.module.scss';
 
 const Button = ({ children }) => {
-  return <BSButton className="Button">{children}</BSButton>;
+  return (
+    <BSButton className="Button" size="lg">
+      {children}
+    </BSButton>
+  );
 };
 
 Button.propTypes = {

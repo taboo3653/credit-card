@@ -21,6 +21,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       components: path.resolve(__dirname, './src/components'),
+      assets: path.resolve(__dirname, './src/assets'),
     },
   },
   module: {
@@ -81,6 +82,7 @@ module.exports = {
           },
         ],
       },
+      /*
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
@@ -92,7 +94,7 @@ module.exports = {
             },
           },
         ],
-      },
+      }, */
     ],
   },
   plugins: [

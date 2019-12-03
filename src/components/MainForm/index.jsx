@@ -1,60 +1,74 @@
 import React from 'react';
 import { Formik } from 'formik';
 
+import PropTypes from 'prop-types';
+
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from 'components/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-class MainForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import Button from 'components/Button';
+import Label from 'components/Label';
+import Input from 'components/Input';
 
-  render() {
-    return (
-      <Form noValidate>
-        <Form.Group>
-          <Form.Label>Card Number</Form.Label>
-          <Form.Control type="text" name="cardNumber" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+import './MainForm.module.scss';
+
+const MainForm = ({ numberValue, onChange }) => {
+  return (
+    <Form className="MainForm">
+      <Form.Group>
+        <Label>Card Number</Label>
+        <Input
+          name="number"
+          value={numberValue}
+          onChange={onChange}
+        />
+        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group>
+        <Label>Card Holder</Label>
+        <Input name="cardHolder" />
+        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Row>
+        <Form.Group
+          as={Col}
+          xs="8"
+          className="pr-4"
+          controlId="validationFormik01"
+        >
+          <Label>Expiration Date</Label>
+          <Form.Row>
+            <Col>
+              <Input name="firstName" placeholder="Month" />
+            </Col>
+            <Col>
+              <Input name="firstName" placeholder="Year" />
+            </Col>
+          </Form.Row>
         </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Card Holder</Form.Label>
-          <Form.Control type="text" name="cardHolder" />
+        <Form.Group
+          as={Col}
+          xs="4"
+          controlId="validationFormikUsername"
+        >
+          <Label>CVV</Label>
+          <Input name="lastName" />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
+      </Form.Row>
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
 
-        <Form.Row>
-          <Form.Group as={Col} md="8" controlId="validationFormik01">
-            <Form.Label>First name</Form.Label>
-            <Form.Row>
-              <Col>
-                <Form.Control type="text" name="firstName" />
-              </Col>
-              <Col>
-                <Form.Control type="text" name="firstName" />
-              </Col>
-            </Form.Row>
-          </Form.Group>
-
-          <Form.Group
-            as={Col}
-            md="4"
-            controlId="validationFormikUsername"
-          >
-            <Form.Label>Last name</Form.Label>
-            <Form.Control type="text" name="lastName" />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-        </Form.Row>
-        <Button type="submit">Submit form</Button>
-      </Form>
-    );
-  }
-}
+MainForm.propTypes = {
+  numberValue: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default MainForm;

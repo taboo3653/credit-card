@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import './Input.module.scss';
 
@@ -17,6 +16,7 @@ const Input = ({ name, placeholder, value, onChange }) => {
   );
 };
 
+/*
 Input.propTypes = {
   name: PropTypes.string,
   placeholder: PropTypes.string,
@@ -30,5 +30,6 @@ Input.defaultProps = {
   value: '',
   onChange: () => {},
 };
+*/
 
 export default Input;

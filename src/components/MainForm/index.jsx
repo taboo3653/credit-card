@@ -1,8 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
 
-import PropTypes from 'prop-types';
-
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -65,10 +63,10 @@ const MainForm = ({ numberValue, onChange }) => {
     </Form>
   );
 };
-
+/*
 MainForm.propTypes = {
   numberValue: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
-
+*/
 export default MainForm;

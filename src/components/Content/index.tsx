@@ -1,0 +1,37 @@
+import * as React from 'react';
+import Card from 'components/Card';
+import MainForm from 'components/MainForm';
+import { Formik } from 'formik';
+
+import './Content.module.scss';
+
+function Content(): React.ReactNode {
+  return (
+    <main className="Content">
+      <Formik
+        initialValues={{
+          number: '123',
+          name: '',
+          month: '',
+          year: '',
+          cvv: '',
+        }}
+        onSubmit={(): void => {
+          /* */
+        }}
+      >
+        {({ values, handleChange }): React.ReactNode => (
+          <>
+            <Card numberValue={values.number.toString()} />
+            <MainForm
+              numberValue={values.number}
+              onChange={handleChange}
+            />
+          </>
+        )}
+      </Formik>
+    </main>
+  );
+}
+
+export default Content;

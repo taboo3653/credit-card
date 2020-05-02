@@ -1,4 +1,5 @@
 module.exports = {
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   env: {
     browser: true,
     commonjs: true,
@@ -7,13 +8,22 @@ module.exports = {
     jest: true,
     serviceworker: true,
   },
-  extends: ['airbnb', 'prettier'],
+  extends: [
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   settings: {
     react: {
       pragma: 'React',
       version: '16.6.3',
     },
     'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
       webpack: {
         config: 'webpack.config.js',
       },
@@ -24,14 +34,25 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
+    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: ['import', 'react', 'prettier'],
+  plugins: ['import', 'react', 'prettier', '@typescript-eslint'],
   rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'prettier/prettier': ['error'],
     'react/jsx-indent': [0],
     'no-underscore-dangle': 0,
@@ -50,7 +71,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       1,
       {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
     'react/display-name': [0],
@@ -60,5 +81,6 @@ module.exports = {
     'linebreak-style': ['off', 'eol-last'],
     quotes: [0],
     semi: [0],
+    'react/no-array-index-key': 'off',
   },
 };

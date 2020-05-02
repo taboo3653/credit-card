@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Formik } from 'formik';
 
 import Form from 'react-bootstrap/Form';
@@ -12,7 +12,15 @@ import Input from 'components/Input';
 
 import './MainForm.module.scss';
 
-const MainForm = ({ numberValue, onChange }) => {
+export interface Props {
+  onChange: (event: React.ChangeEvent<unknown>) => void;
+  numberValue: string;
+}
+
+function MainForm({
+  numberValue,
+  onChange: handleChange,
+}: Props): React.ReactElement {
   return (
     <Form className="MainForm">
       <Form.Group>
@@ -20,7 +28,7 @@ const MainForm = ({ numberValue, onChange }) => {
         <Input
           name="number"
           value={numberValue}
-          onChange={onChange}
+          onChange={handleChange}
         />
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
       </Form.Group>
@@ -62,7 +70,7 @@ const MainForm = ({ numberValue, onChange }) => {
       <Button type="submit">Submit</Button>
     </Form>
   );
-};
+}
 /*
 MainForm.propTypes = {
   numberValue: PropTypes.string.isRequired,

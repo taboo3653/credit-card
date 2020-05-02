@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Button as BSButton } from 'react-bootstrap';
+import { Button as BSButton, ButtonProps } from 'react-bootstrap';
 import './Button.module.scss';
 
 export interface Props {
   children: string;
+  type?: ButtonProps['type'];
 }
 
-const Button = ({ children }: Props): React.ReactNode => {
+const Button = ({ children, type }: Props): React.ReactElement => {
   return (
-    <BSButton className="Button" size="lg">
+    <BSButton type={type} className="Button" size="lg">
       {children}
     </BSButton>
   );

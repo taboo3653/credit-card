@@ -1,14 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import Form from 'react-bootstrap/Form';
 import './Label.module.scss';
 
-const Label = ({ children }) => {
-  return <Form.Label className="Label">{children}</Form.Label>;
-};
+export interface Props {
+  children: string;
+}
 
-/*
-Label.propTypes = {
-  children: PropTypes.string.isRequired,
-};
-*/
+function Label({ children }: Props): React.ReactElement {
+  return <Form.Label className="Label">{children}</Form.Label>;
+}
+
 export default Label;

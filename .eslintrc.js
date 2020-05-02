@@ -82,5 +82,7 @@ module.exports = {
     quotes: [0],
     semi: [0],
     'react/no-array-index-key': 'off',
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': ['off'],
   },
 };

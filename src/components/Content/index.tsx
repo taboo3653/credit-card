@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 
 import './Content.module.scss';
 
-function Content(): React.ReactNode {
+function Content(): React.ReactElement {
   return (
     <main className="Content">
       <Formik

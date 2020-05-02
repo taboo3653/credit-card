@@ -10,7 +10,7 @@ import Button from 'components/Button';
 import Label from 'components/Label';
 import Input from 'components/Input';
 
-import './MainForm.module.scss';
+import styles from './MainForm.module.scss';
 
 export interface Props {
   onChange: (event: React.ChangeEvent<unknown>) => void;
@@ -22,7 +22,7 @@ function MainForm({
   onChange: handleChange,
 }: Props): React.ReactElement {
   return (
-    <Form className="MainForm">
+    <Form className={styles.MainForm}>
       <Form.Group>
         <Label>Card Number</Label>
         <Input

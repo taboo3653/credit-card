@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import Content from 'components/Content';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'assets/css/normalize.css';
 import './App.scss';
 
-const App = () => {
+const App = (): React.ReactElement => {
   return <Content />;
 };
 

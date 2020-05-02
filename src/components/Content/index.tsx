@@ -3,11 +3,11 @@ import Card from 'components/Card';
 import MainForm from 'components/MainForm';
 import { Formik } from 'formik';
 
-import './Content.module.scss';
+import styles from './Content.module.scss';
 
 function Content(): React.ReactElement {
   return (
-    <main className="Content">
+    <main className={styles.Content}>
       <Formik
         initialValues={{
           number: '123',
@@ -16,9 +16,7 @@ function Content(): React.ReactElement {
           year: '',
           cvv: '',
         }}
-        onSubmit={(): void => {
-          /* */
-        }}
+        onSubmit={(): void => {}}
       >
         {({ values, handleChange }): React.ReactNode => (
           <>

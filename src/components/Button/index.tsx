@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button as BSButton, ButtonProps } from 'react-bootstrap';
-import './Button.module.scss';
+
+import styles from './Button.module.scss';
 
 export interface Props {
   children: string;
@@ -9,7 +10,7 @@ export interface Props {
 
 const Button = ({ children, type }: Props): React.ReactElement => {
   return (
-    <BSButton type={type} className="Button" size="lg">
+    <BSButton type={type} className={styles.Button} size="lg">
       {children}
     </BSButton>
   );

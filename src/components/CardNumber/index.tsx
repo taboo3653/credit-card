@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './CardNumber.module.scss';
+import styles from './CardNumber.module.scss';
 
 export interface Props {
   value?: string;
@@ -19,12 +19,12 @@ function CardNumber({
 
       return (
         <span key={key}>
-          <div className="CardNumber__numberItem">{val}</div>
+          <div className={styles.NumberItem}>{val}</div>
         </span>
       );
     });
 
-  return <div className="CardNumber">{items}</div>;
+  return <div className={styles.CardNumber}>{items}</div>;
 }
 
 export default CardNumber;

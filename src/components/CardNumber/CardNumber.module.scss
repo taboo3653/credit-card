@@ -7,11 +7,6 @@
   padding: 10px 15px;
   width: 100%;
 
-  &__numberItem {
-    display: inline-block;
-    width: 16px;
-  }
-
   & span {
     &:nth-child(4n + 1) {
       margin-left: 2.2rem;
@@ -20,4 +15,9 @@
       margin-left: 0px;
     }
   }
+}
+
+.NumberItem {
+  display: inline-block;
+  width: 16px;
 }

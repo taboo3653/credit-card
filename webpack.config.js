@@ -3,6 +3,47 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const cssRuleWithModule = isModule => {
+  return {
+    test: /\.(sc|sa|c)ss$/,
+    [isModule ? 'include' : 'exclude']: /\.module\.(sc|sa|c)ss$/,
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: './',
+          hmr: process.env.NODE_ENV === 'development',
+        },
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+
+          modules: isModule && {
+            mode: 'local',
+            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            context: path.resolve(__dirname, 'src'),
+            hashPrefix: 'my-custom-hash',
+          },
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+    ],
+  };
+};
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -36,45 +77,8 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-
-      {
-        test: /\.(sc|sa|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: './',
-              hmr: process.env.NODE_ENV === 'development',
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              /*
-              modules: {
-                mode: 'local',
-                localIdentName:
-                  '[path][name]__[local]--[hash:base64:5]',
-                context: path.resolve(__dirname, 'src'),
-                hashPrefix: 'my-custom-hash',
-              }, */
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
+      cssRuleWithModule(false),
+      cssRuleWithModule(true),
       {
         test: /\.(svg|png|jpg|gif|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [

@@ -10,7 +10,7 @@ function Content(): React.ReactElement {
     <main className={styles.Content}>
       <Formik
         initialValues={{
-          number: '123',
+          number: '',
           name: '',
           month: '',
           year: '',

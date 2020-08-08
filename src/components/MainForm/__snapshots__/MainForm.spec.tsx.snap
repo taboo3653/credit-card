@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<Form
+  className="MainForm"
+  inline={false}
+>
+  <FormGroup>
+    <Label>
+      Card Number
+    </Label>
+    <Input
+      name="number"
+      onChange={[MockFunction]}
+      value=""
+    />
+    <Feedback
+      type="valid"
+    >
+      Looks good!
+    </Feedback>
+  </FormGroup>
+  <FormGroup>
+    <Label>
+      Card Holder
+    </Label>
+    <Input
+      name="cardHolder"
+    />
+    <Feedback
+      type="valid"
+    >
+      Looks good!
+    </Feedback>
+  </FormGroup>
+  <FormRow>
+    <FormGroup
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "Col",
+          "render": [Function],
+        }
+      }
+      className="pr-4"
+      controlId="validationFormik01"
+      xs="8"
+    >
+      <Label>
+        Expiration Date
+      </Label>
+      <FormRow>
+        <Col>
+          <Input
+            name="firstName"
+            placeholder="Month"
+          />
+        </Col>
+        <Col>
+          <Input
+            name="firstName"
+            placeholder="Year"
+          />
+        </Col>
+      </FormRow>
+    </FormGroup>
+    <FormGroup
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "Col",
+          "render": [Function],
+        }
+      }
+      controlId="validationFormikUsername"
+      xs="4"
+    >
+      <Label>
+        CVV
+      </Label>
+      <Input
+        name="lastName"
+      />
+      <Feedback
+        type="valid"
+      >
+        Looks good!
+      </Feedback>
+    </FormGroup>
+  </FormRow>
+  <Button
+    type="submit"
+  >
+    Submit
+  </Button>
+</Form>
+`;

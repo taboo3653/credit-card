@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { Formik } from 'formik';
 
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import InputGroup from 'react-bootstrap/InputGroup';
 
 import Button from 'components/Button';
 import Label from 'components/Label';
@@ -71,10 +68,5 @@ function MainForm({
     </Form>
   );
 }
-/*
-MainForm.propTypes = {
-  numberValue: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-*/
+
 export default MainForm;

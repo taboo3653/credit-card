@@ -1,29 +1,39 @@
 {
-  "name": "cradit-card",
+  "name": "credit-card",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "author": "Nikita Agafonov",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.9.4",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/node": "^13.13.4",
     "@types/webpack": "^4.41.12",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "autoprefixer": "^9.7.6",
+    "babel-jest": "^26.2.2",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
+    "enzyme-to-json": "^3.5.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -37,6 +47,9 @@
     "file-loader": "^4.3.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.2.2",
+    "jsdom": "^16.3.0",
     "mini-css-extract-plugin": "^0.8.2",
     "node-sass": "^4.14.0",
     "postcss-loader": "^3.0.0",
@@ -53,16 +66,40 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.9",
     "@types/react-bootstrap": "^1.0.1",
     "bootstrap": "^4.4.1",
     "formik": "^2.1.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "ts-jest": "^26.1.4"
   },
   "browserslist": [
     "> 1%",
     "last 3 version"
-  ]
+  ],
+  "jest": {
+    "verbose": true,
+    "clearMocks": true,
+    "collectCoverage": true,
+    "setupFilesAfterEnv": [
+      "./config/setupTest.js"
+    ],
+    "snapshotSerializers": [
+      "./node_modules/enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "^components/(.*)": "<rootDir>/src/components/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "node"
+  }
 }

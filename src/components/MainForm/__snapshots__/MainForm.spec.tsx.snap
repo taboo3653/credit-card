@@ -9,7 +9,8 @@ exports[`snapshot 1`] = `
     <Label>
       Card Number
     </Label>
-    <Input
+    <NumberInput
+      length={16}
       name="number"
       onChange={[MockFunction]}
       value=""

@@ -3,17 +3,38 @@ import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
 import { JSDOM } from 'jsdom';
 
-// React 16 Enzyme adapter
-Enzyme.configure({ adapter: new Adapter() });
-
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 global.toJson = toJson;
 
-const doc = new JSDOM('<!doctype html><html><body></body></html>');
-global.document = doc;
-global.window = doc.defaultView;
+Enzyme.configure({ adapter: new Adapter() });
+
+function setUpDomEnvironment() {
+  const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+    url: 'http://localhost/',
+  });
+  const { window } = dom;
+
+  global.window = window;
+  global.document = window.document;
+  global.navigator = {
+    userAgent: 'node.js',
+  };
+  copyProps(window, global);
+}
+
+function copyProps(src, target) {
+  const props = Object.getOwnPropertyNames(src)
+    .filter(prop => typeof target[prop] === 'undefined')
+    .map(prop => Object.getOwnPropertyDescriptor(src, prop));
+  Object.defineProperties(target, props);
+}
+
+setUpDomEnvironment();
+
+// React 16 Enzyme adapter
+
 // Fail tests on any warning
 // console.error = message => {
 //   throw new Error(message);

@@ -15,9 +15,7 @@ function Card({
     <div className={styles.Card}>
       <div className={styles.Top}>
         <img src="assets/images/chip.png" alt="chip" />
-        <div className={styles.CardType}>
-          <img src="assets/images/visa.png" alt="card-type" />
-        </div>
+        <img src="assets/images/visa.png" alt="card-type" />
       </div>
       <CardNumber value={numberValue} />
     </div>

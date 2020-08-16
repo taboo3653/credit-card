@@ -84,7 +84,7 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'no-empty-function': 'off',
     'react/jsx-props-no-spreading': 'off',
-
+    'no-param-reassign': 'off',
     '@typescript-eslint/no-empty-function': ['off'],
   },
 };

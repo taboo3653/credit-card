@@ -17,6 +17,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.9.4",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/react": "^10.4.8",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/node": "^13.13.4",
@@ -71,6 +73,7 @@
     "@types/react-bootstrap": "^1.0.1",
     "bootstrap": "^4.4.1",
     "formik": "^2.1.4",
+    "jest-dom": "^4.0.0",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
@@ -97,9 +100,11 @@
     },
     "moduleNameMapper": {
       "^components/(.*)": "<rootDir>/src/components/$1",
+      "^tools/(.*)": "<rootDir>/src/tools/$1",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
       "\\.(css|scss)$": "identity-obj-proxy"
     },
-    "testEnvironment": "node"
+    "testEnvironment": "jsdom",
+    "testURL": "http://localhost/"
   }
 }

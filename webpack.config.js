@@ -60,10 +60,6 @@ module.exports = {
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
-    alias: {
-      components: path.resolve(__dirname, './src/components'),
-      assets: path.resolve(__dirname, './src/assets'),
-    },
   },
   module: {
     rules: [

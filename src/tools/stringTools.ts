@@ -9,3 +9,6 @@ export const splitByLength = (
 
 export const hasNotNumber = (value: string): boolean =>
   /[^0-9]/.test(value);
+
+export const filterNumbers = (value: string): string =>
+  (value.match(/[0-9]/g) || []).join('');

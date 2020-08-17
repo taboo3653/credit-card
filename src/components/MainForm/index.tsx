@@ -5,8 +5,8 @@ import Col from 'react-bootstrap/Col';
 
 import Button from 'components/Button';
 import Label from 'components/Label';
-import Input from 'components/Input';
-import NumberInput from 'components/NumberInput';
+import Input from 'components/Inputs/Input';
+import CardNumberInput from 'components/Inputs/CardNumberInput';
 
 import styles from './MainForm.module.scss';
 
@@ -23,10 +23,9 @@ function MainForm({
     <Form className={styles.MainForm}>
       <Form.Group>
         <Label>Card Number</Label>
-        <NumberInput
+        <CardNumberInput
           name="number"
           value={numberValue}
-          length={16}
           onChange={handleChange}
         />
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

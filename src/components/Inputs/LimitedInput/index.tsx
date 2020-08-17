@@ -10,8 +10,8 @@ const handleChange = (propHandleChange, length: number) => (
   propHandleChange(event);
 };
 
-function LimitedInput(
-  InputComponent: React.ComponentType<InputProps>,
+function LimitedInput<T extends InputProps>(
+  InputComponent: React.ComponentType<T>,
   length: number,
 ) {
   return ({
@@ -21,7 +21,7 @@ function LimitedInput(
     return (
       <InputComponent
         onChange={handleChange(propHandleChange, length)}
-        {...otherProps}
+        {...(otherProps as T)}
       />
     );
   };

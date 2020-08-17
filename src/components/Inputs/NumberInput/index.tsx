@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Input, { Props as InputProps } from 'components/Input';
+import Input, { Props as InputProps } from 'components/Inputs/Input';
 
 import { filterNumbers } from 'tools/stringTools';
 

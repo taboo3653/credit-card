@@ -7,16 +7,26 @@ import Button from 'components/Button';
 import Label from 'components/Label';
 import Input from 'components/Inputs/Input';
 import CardNumberInput from 'components/Inputs/CardNumberInput';
+import NumberInput from 'components/Inputs/NumberInput';
+import Select from 'components/Inputs/Select';
+
+import LimitedInput from 'components/Inputs/LimitedInput';
+
+import FormValues from 'types/FormValues';
 
 import styles from './MainForm.module.scss';
 
 export interface Props {
   onChange: (event: React.ChangeEvent<unknown>) => void;
-  numberValue: string;
+  values: FormValues;
 }
 
+const CVVInput = LimitedInput(NumberInput, 3);
+const DateInput = LimitedInput(NumberInput, 2);
+const DateSelect = Select(Input);
+
 function MainForm({
-  numberValue,
+  values,
   onChange: handleChange,
 }: Props): React.ReactElement {
   return (
@@ -25,7 +35,7 @@ function MainForm({
         <Label>Card Number</Label>
         <CardNumberInput
           name="number"
-          value={numberValue}
+          value={values.number}
           onChange={handleChange}
         />
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -33,7 +43,11 @@ function MainForm({
 
       <Form.Group>
         <Label>Card Holder</Label>
-        <Input name="cardHolder" />
+        <Input
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+        />
         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
       </Form.Group>
 
@@ -47,10 +61,26 @@ function MainForm({
           <Label>Expiration Date</Label>
           <Form.Row>
             <Col>
-              <Input name="firstName" placeholder="Month" />
+              <DateSelect
+                name="month"
+                options={Array(12)
+                  .fill(0)
+                  .map((_, i) => i + 1)}
+                placeholder="Month"
+                value={values.month}
+                onChange={handleChange}
+              />
             </Col>
             <Col>
-              <Input name="firstName" placeholder="Year" />
+              <DateSelect
+                name="year"
+                options={Array(11)
+                  .fill(0)
+                  .map((_, i) => new Date().getFullYear() + i)}
+                placeholder="Year"
+                value={values.year}
+                onChange={handleChange}
+              />
             </Col>
           </Form.Row>
         </Form.Group>
@@ -61,7 +91,11 @@ function MainForm({
           controlId="validationFormikUsername"
         >
           <Label>CVV</Label>
-          <Input name="lastName" />
+          <CVVInput
+            name="cvv"
+            value={values.cvv}
+            onChange={handleChange}
+          />
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
       </Form.Row>

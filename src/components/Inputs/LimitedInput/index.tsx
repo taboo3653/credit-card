@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { Props as InputProps } from 'components/Inputs/Input';
 
-const handleChange = (propHandleChange, length: number) => (
-  event: React.ChangeEvent<HTMLInputElement>,
-): void => {
+const handleChange = (
+  propHandleChange: (event: React.SyntheticEvent) => void,
+  length: number,
+) => (event: React.ChangeEvent<HTMLInputElement>): void => {
   event.target.value = event.target.value.slice(0, length);
 
   propHandleChange(event);

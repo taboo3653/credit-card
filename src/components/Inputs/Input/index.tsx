@@ -1,28 +1,22 @@
 import * as React from 'react';
 import Form from 'react-bootstrap/Form';
+import { FormControl } from 'react-bootstrap';
 
-export interface Props {
+export interface Props
+  extends React.ComponentProps<typeof FormControl> {
   name: string;
   placeholder?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<unknown>) => void;
 }
 
-function Input({
-  name,
-  placeholder = '',
-  value = '',
-  onChange: handleChange = (): void => {},
-}: Props): React.ReactElement {
+function Input(props: Props): React.ReactElement {
   return (
     <Form.Control
       type="text"
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange}
       size="lg"
       className="Input"
+      {...props}
     />
   );
 }
